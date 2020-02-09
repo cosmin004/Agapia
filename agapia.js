@@ -92,6 +92,7 @@ function main()
         var keyHandler = new mxKeyHandler(graph);
         var rubberband = new mxRubberband(graph);
         
+        // Function for adding a new custom element on the graph. Check that it actually adds 5 vertices, with 4 of them as connection points. 
         var addVertex = function(icon, w, h, style)
         {
             var vertex = graph.insertVertex(parent, null, 'Empty module', 20, 80, 150, 100);
@@ -128,7 +129,7 @@ function main()
         button.style.top = '2px';
         
 
-        // Edge addition event capture and validation
+        // Edge addition event capture and validation for module composition
         graph.addEdge = function(edge, parent, source, target, index){
             if((source.value == 'Speak' && target.value == 'Listen') || (source.value == 'Write' && target.value == 'Read')){
                 var tmp = mxGraph.prototype.addEdge.apply(this, arguments);
@@ -136,7 +137,7 @@ function main()
             }
         };
 
-        // Delete
+        // Delete functionality. Focusing an element and pressing the backspace key will delete it. 
         var keyHandler = new mxKeyHandler(graph);
         keyHandler.bindKey(8, function(evt)
         {
@@ -147,6 +148,7 @@ function main()
         });
         graph.centerZoom = false;
         
+        // Undo and  redo manager functionality
         var undoManager = new mxUndoManager();
         var listener = function(sender, evt)
         {
@@ -184,7 +186,6 @@ function main()
             });
         });
 
-        // document.body.appendChild(button);
         document.body.appendChild(mxUtils.button('Zoom In', function()
         {
             graph.zoomIn();

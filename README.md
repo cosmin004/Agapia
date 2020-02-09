@@ -49,3 +49,7 @@ The import functionality is not yet complete and a format of importing an existi
 ### Work more on the styling
 
 The style of the GUI is pretty rudimentary at the moment, so changes in the `style.css` file for a better aspect would be required. 
+
+## More documentation
+
+For any extra functionality on mxGraph engine check the official mxGraph documentation. All the functions implemented for the Agapia editor have been documented inside the code. 
